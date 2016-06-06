@@ -1,5 +1,3 @@
-console.log('Hello, I am working.');
-
 /*
 Problem #1
 
@@ -27,23 +25,23 @@ Call that function three times, passing in different values each time.
 Bonus: Accept floating point values for amount per day, and round the result to a round number.
 */
 
-function calculateAge(birthYear) {
-  var year = new Date();
-  return "You are either " + (year.getFullYear() - birthYear - 1) + " or " + (year.getFullYear() - birthYear) + ".";
+var currentYear = new Date().getFullYear();
+
+function determineAge(birthYear) {
+  return (currentYear - birthYear);
 }
+console.log(determineAge(1990));
 
+//This does what part 1 of the homework asked to accomplish
+function calculateAge(age) {
+  return "You are either " + (age - 1) + " or " + (age) + ".";
+}
+console.log(calculateAge(determineAge(1990)));
 
-function calculateSupply(maxAge, amountPerDay) {
-  
-  function calcAge(birthdate) {
-    var year = new Date();
-    return year.getFullYear() - birthdate;
-  }
-
-  var lifeLeft = maxAge - calcAge(); 
-
+//This does what Part 2 of the homework asked to accomplish
+function calculateSupply(age, maxAge, amountPerDay) {
+  var lifeLeft = maxAge - age; 
   return "You will need " + (amountPerDay * lifeLeft) + " to last you until the ripe old age of " + maxAge + "."; 
 }
+console.log(calculateSupply(determineAge(1990), 100, 5)); 
 
-console.log(calculateAge(1990));
-console.log(calculateSupply(100, 2));
